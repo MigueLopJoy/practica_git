@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const tasksList = []
+
+        function addTask(taskName) {
+            const newTask = { name: taskName, completed: false }
+            tasksList.push(newTask)
+        }
+
+        function showTasksList() {
+            console.log('Lista de Tareas:')
+            for (let i = 0; i < tasksList.length; i++) {
+                let task = tasksList[i]
+                console.log(`${i + 1}. ${task.name} - ${task.completed ? 'Completada' : 'Pendiente'}`);
+            }
+        }
+
+        addTask('Hacer ejercicio');
+        addTask('Estudiar JavaScript');
+        showTasksList();
+    </script>
+</body>
+
+</html>
