@@ -14,19 +14,43 @@
         function addTask(taskName) {
             const newTask = { name: taskName, completed: false }
             tasksList.push(newTask)
+            console.log(tasksList)
         }
 
-        function showTasksList() {
-            console.log('Lista de Tareas:')
+        function displayTaskList() {
+            let list = 'Lista de tareas:' + "\n"
             for (let i = 0; i < tasksList.length; i++) {
                 let task = tasksList[i]
-                console.log(`${i + 1}. ${task.name} - ${task.completed ? 'Completada' : 'Pendiente'}`);
+                list += `${i + 1}. ${task.name} - ${task.completed ? 'Completada' : 'Pendiente'}` + "\n"
+            }
+            alert(list)
+        }
+
+        function promptCommand() {
+            let command = prompt('Pulse 1 para añadir tarea. Pulse 2 para ver la lista de tareas. Pulse 3 para salir. ')
+            switch (command) {
+                case '1':
+                    let task = prompt('Introduzca el nombre de la tarea: ')
+                    addTask(task)
+                    break
+                case '2':
+                    displayTaskList()
+                    command = prompt('Pulse 1 si desea continuar. Pulse 3 para salir. ')
+                    break
+                case '3':
+                    alert("¡Hasta pronto!")
+                    break
+                default:
+                    console.log('Comando erróneo')
+            }
+
+            if (command !== "3") {
+                promptCommand()
             }
         }
 
-        addTask('Hacer ejercicio');
-        addTask('Estudiar JavaScript');
-        showTasksList();
+        promptCommand()
+
     </script>
 </body>
 
